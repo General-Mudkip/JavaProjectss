@@ -9,15 +9,39 @@ public class MortgageCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Principal: ");
-        int principal = scanner.nextInt();
+        int principal = 0;
+        while (principal <= 0) {
+            System.out.println("Principal (>0): ");
+            principal = scanner.nextInt();
+            if (principal <= 0) {
+                System.out.println("Invalid input!");
+            }
+        }
 
-        System.out.println("Annual Interest Rate: ");
-        float annualInterest = scanner.nextFloat();
-        float monthlyInterest = (annualInterest/100)/12;
+        float annualInterest = 0;
+        float monthlyInterest = 0;
+        while (annualInterest <= 0) {
+            System.out.println("Annual Interest Rate (>0): ");
+            annualInterest = scanner.nextFloat();
+            if (annualInterest <= 0) {
+                System.out.println("Invalid input!");
+            } else {
+                monthlyInterest = (annualInterest/100)/12;
+            }
 
-        System.out.println("Period (Years): ");
-        int monthsPeriod = scanner.nextInt() * 12;
+        }
+
+        int monthsPeriod = 0;
+        while (monthsPeriod <= 0) {
+            System.out.println("Period (Years >0): ");
+            monthsPeriod = scanner.nextInt();
+            if (monthsPeriod <= 0) {
+                System.out.println("Invalid input!");
+            } else {
+                monthsPeriod *= 12;
+            }
+        }
+
 
         double mortgage = principal *
                 monthlyInterest * Math.pow((1+monthlyInterest),monthsPeriod) /
