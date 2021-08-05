@@ -1,10 +1,12 @@
 package com.bencer;
 
-import java.util.Objects;
-import java.util.Scanner;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Exercises {
-    public static void circleFormulae() {
+    public static void circleFormulae() throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Radius: ");
         double numInput = scanner.nextDouble();
@@ -18,9 +20,9 @@ public class Exercises {
         double total = 0;
         int elementCount = 0;
         String input = "";
-        while (!Objects.equals(input, "fin")) {
+        while (!input.equals("fin")) {
             input = scanner.nextLine();
-            if (Objects.equals(input, "fin")) {
+            if (input.equals("fin")) {
                 System.out.println("The mean is: " + total/elementCount );
             } else {
                 try {
@@ -34,7 +36,32 @@ public class Exercises {
 
     }
 
+    public static void areaOfPolygon() throws NumberFormatException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How many sides are there?");
+        double polygonSides = scanner.nextInt();
+        System.out.println("What is the length of one of the sides?");
+        double sideLength = scanner.nextInt();
+        double area = (polygonSides*Math.pow(sideLength,2))/(4*Math.tan(Math.PI/polygonSides));
+        System.out.println("The area of a " + (int)polygonSides + "-sided polygon with a side length of " + sideLength + " is " + area);
+    }
+
+    public static void stringReverser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String stringInput = scanner.nextLine();
+        String[] stringToReverse = stringInput.split("");
+        System.out.println(Arrays.toString(stringToReverse));
+        String[] temp = new String[stringInput.length()];
+        System.out.println(Arrays.toString(temp));
+        for (int i = 0; i<(stringInput.length()); i++) {
+            temp[i] = stringToReverse[stringInput.length()-i-1];
+        }
+        String finalString = String.join("", temp);
+        System.out.println(finalString);
+    }
+
     public static void main(String[] args) {
-        mean();
+        stringReverser();
     }
 }
