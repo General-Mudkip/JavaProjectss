@@ -61,7 +61,14 @@ public class Exercises {
         System.out.println(finalString);
     }
 
+    public static void singleDoubleTripleIntegerAddition() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input an integer:");
+        int numberInput = scanner.nextInt();
+        System.out.println("The result of " + numberInput + " + " + numberInput*11 + " + " + numberInput*111 + " is " + (numberInput+numberInput*11+numberInput*111));
+    }
+
     public static void main(String[] args) {
-        stringReverser();
+        singleDoubleTripleIntegerAddition();
     }
 }
